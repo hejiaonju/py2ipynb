@@ -1,3 +1,5 @@
+from json.encoder import JSONEncoder
+
 def convert_ipynb(infile,outfile):
     nb_start = '''{
      "cells": [
@@ -16,19 +18,6 @@ def convert_ipynb(infile,outfile):
         "\\n",
         "# This line will add a button to toggle visibility of code blocks, for use with the HTML export version\\n",
         "di.display_html(\'''<button onclick=\\"jQuery('.input_area').toggle(); jQuery('.prompt').toggle();\\">Toggle code</button>\''', raw=True)"
-       ]
-      },
-
-      {
-       "cell_type": "code",
-       "execution_count": null,
-       "metadata": {
-        "collapsed": true
-       },
-       "outputs": [],
-       "source": [
-        "%cd ~/Dropbox/Data/\\n",
-        "%run ./python/ipynb_startup.py"
        ]
       },
 
@@ -85,7 +74,7 @@ def convert_ipynb(infile,outfile):
       },
     '''
 
-    #infile=os.path.join('.','test','s3.py')
+
     with open(infile,'r') as f_in:
         fcontent = JSONEncoder().encode(f_in.read())
         cells=fcontent[1:-1].split(sep='#%%')
@@ -110,6 +99,5 @@ def convert_ipynb(infile,outfile):
 
         nb_content=nb_content.rstrip()[:-1]
         nb_content+=nb_end
-    #outfile=os.path.join('.','test','s3.ipynb')
     with open(outfile,'w') as f_out:
         f_out.write(nb_content)
