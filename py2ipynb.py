@@ -3,33 +3,15 @@ from json.encoder import JSONEncoder
 def convert_ipynb(infile,outfile):
     nb_start = '''{
      "cells": [
-      {
-       "cell_type": "code",
-       "execution_count": null,
-       "metadata": {
-        "collapsed": true
-       },
-       "outputs": [],
-       "source": [
-        "import IPython.core.display as di\\n",
-        "\\n",
-        "# This line will hide code by default when the notebook is exported as HTML\\n",
-        "di.display_html('<script>jQuery(function() {if (jQuery(\\"body.notebook_app\\").length == 0) { jQuery(\\".input_area\\").toggle(); jQuery(\\".prompt\\").toggle();}});</script>', raw=True)\\n",
-        "\\n",
-        "# This line will add a button to toggle visibility of code blocks, for use with the HTML export version\\n",
-        "di.display_html(\'''<button onclick=\\"jQuery('.input_area').toggle(); jQuery('.prompt').toggle();\\">Toggle code</button>\''', raw=True)"
-       ]
-      },
-
      '''
 
     nb_end =r'''
      ],
      "metadata": {
       "kernelspec": {
-       "display_name": "Python [Root]",
+       "display_name": "python3",
        "language": "python",
-       "name": "Python [Root]"
+       "name": "python3"
       },
       "language_info": {
        "codemirror_mode": {
