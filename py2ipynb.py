@@ -84,6 +84,7 @@ def convert_ipynb(infile,outfile):
                 lines=string[1:].strip('\\n').split(sep='\\n')
                 this_cell=''
                 for line in lines:
+                    line=line.lstrip('#')
                     this_cell+='"'+line+'\\n",\n'
                 this_cell=this_cell.rstrip(',\n')
                 this_cell=this_cell[0:-3]+this_cell[-1]
